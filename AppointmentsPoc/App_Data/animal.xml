@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<item id='1' idpessoa='1' idanimal='1' nome='Gato Felix'></item>
+	<item id='2' idpessoa='1' idanimal='2' nome='Pluto'></item>
+	<item id='3' idpessoa='2' idanimal='1' nome='Mikey mouse'></item>
+	<item id='4' idpessoa='3' idanimal='1' nome='Garfield'></item>
+</root>

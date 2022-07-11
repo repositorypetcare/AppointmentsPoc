@@ -1,0 +1,170 @@
+﻿@model AppointmentsPoc.Models.AppointmentsModel
+
+@{
+    ViewBag.Title = "Agendamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">@ViewBag.Title</h5>
+        </div>
+        <div class="card-body">
+
+            <div class="form-group row">
+                <label for="OPT_ESP" class="col-sm-1 col-form-label">Especialidade</label>
+                <div class="col-sm-2">
+                    @Html.DropDownListFor(model => model.OPT_ESP, new SelectList(Model.Especialidades, "Value", "Text"), " -- Selecione --", new { @class = "form-control form-control-sm" })
+                </div>
+
+                <label for="OPT_LOC" class="col-sm-1 col-form-label">Local</label>
+                <div class="col-sm-2">
+                    @Html.DropDownListFor(model => model.OPT_LOC, new SelectList(Model.Local, "Value", "Text"), " -- Selecione --", new { @class = "form-control form-control-sm" })
+                </div>
+                <label for="OPT_ANI" class="col-sm-1 col-form-label">Animal</label>
+                <div class="col-sm-2">
+                    @Html.DropDownListFor(model => model.OPT_ANI, new SelectList(Model.Animais, "Value", "Text"), " -- Selecione --", new { @class = "form-control form-control-sm" })
+                </div>
+                <label for="OPT_PRO" class="col-sm-1 col-form-label">Profissional</label>
+                <div class="col-sm-2">
+                    @Html.DropDownListFor(model => model.OPT_PRO, new SelectList(Model.Local, "Value", "Text"), " -- Selecione --", new { @class = "form-control form-control-sm" })
+                </div>
+
+                <label for="DAT_AGE" class="col-sm-1 col-form-label">Data Inicial</label>
+                <div class="col-sm-2">
+                    @Html.TextBox("periodo", "01/01/2018 - 02/01/2018", new { @class = "form-control form-control-sm" })
+                </div>
+            </div>
+            <div id="lista-dados">
+                @Html.RenderXml(Model.XML_SOURCE, Model.XSLT_SOURCE)
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@section scripts{
+
+    <script>
+
+
+        $(document).ready(function () {
+
+            $('#OPT_ESP').on("change", function () {
+                var idesp = $('#OPT_ESP').val();
+                var VDATA = { id: idesp };
+                $.ajax({
+                    type: "GET",
+
+                        url: GetUrl('Home/GetLocal'),
+                    data: VDATA,
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    success: function (result) {
+
+                        console.log(result);
+
+                        var options =  '<option value="-1">Selecione um local</option>';
+                        if (result.length > 0) {
+                            for (var i = 0; i < result.length; i++) {
+                                options += '<option value="' + result[i].Key + '">' + result[i].Text + '</option>';
+                            }
+                        }
+
+                        $('#OPT_LOC').html(options);
+
+                    },
+                    error: function (data) {
+
+                    }
+                   });
+            });
+
+
+
+            $('#OPT_LOC').on("change", function () {
+                var idlocal = $('#OPT_LOC').val();
+                var VDATA = { id: idlocal };
+                $.ajax({
+                    type: "GET",
+
+                    url: GetUrl('Home/GetProfissional'),
+                    data: VDATA,
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    success: function (result) {
+                        console.log(result);
+                        var options = '<option value="-1">Selecione um profissional</option>';
+                        if (result.length > 0) {
+                            for (var i = 0; i < result.length; i++) {
+                                options += '<option value="' + result[i].Key + '">' + result[i].Text + '</option>';
+                            }
+                        }
+
+                        $('#OPT_PRO').html(options);
+
+                    },
+                    error: function (data) {
+
+                    }
+                });
+            });
+
+            $(function () {
+                $('input[name="periodo"]').daterangepicker({
+                    opens: 'left',
+                    locale: {
+                        format: 'DD/MM/YYYY',
+                        separator: ' - ',
+                        applyLabel: 'Aplicar',
+                        cancelLabel: 'Cancelar',
+                        daysOfWeek: [
+                            'Dom',
+                            'Seg',
+                            'Ter',
+                            'Qua',
+                            'Qui',
+                            'Sex',
+                            'Sab'
+                        ],
+                        monthNames: [
+                            'Janeiro',
+                            'Fevereiro',
+                            'Março',
+                            'Abril',
+                            'Maio',
+                            'Junho',
+                            'Julho',
+                            'Agosto',
+                            'Setembro',
+                            'Outubro',
+                            'Novembro',
+                            'Dezembro'
+                        ],
+                        firstDay: 1
+                    }
+                }, function (start, end, label) {
+                    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+                });
+            });
+
+        });
+
+        function removeOptions(selectElement) {
+            var i, L = selectElement.options.length - 1;
+            for (i = L; i >= 0; i--) {
+                selectElement.remove(i);
+            }
+        }
+
+
+
+        function GetUrl( path) {
+            return 'http://localhost:56261/' + path;
+        }
+    </script>
+}

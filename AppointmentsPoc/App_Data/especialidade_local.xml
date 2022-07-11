@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<!-- Fisioterapia-->
+	<item idesp="13" idlocal="1"></item>
+	<item idesp="13" idlocal="2"></item>
+	<!-- Fitoterapia-->
+	<item idesp="14" idlocal="2"></item>
+</root>

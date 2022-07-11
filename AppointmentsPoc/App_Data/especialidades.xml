@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<item id='1' nome='Acupuntura'></item>
+	<item id='2' nome='Anestesia'></item>
+	<item id='3' nome='Animais silvestres'></item>
+	<item id='4' nome='Cardiologia'></item>
+	<item id='5' nome='Cirurgia Geral'></item>
+	<item id='6' nome='Clínico Geral'></item>
+	<item id='7' nome='Comportamento animal'></item>
+	<item id='8' nome='Cuidados paliativos'></item>
+	<item id='9' nome='Dermatologia'></item>
+	<item id='10' nome='Dietoterapia da MTC'></item>
+	<item id='11' nome='Endocrinologia'></item>
+	<item id='12' nome='Felinos'></item>
+	<item id='13' nome='Fisioterapia'></item>
+	<item id='14' nome='Fitoterapia'></item>
+	<item id='15' nome='Gastroenterologia'></item>
+	<item id='16' nome='Hematologia'></item>
+	<item id='17' nome='Homeopatia'></item>
+	<item id='18' nome='Medicina Veterinária Canábica'></item>
+	<item id='19' nome='Medicina Veterinária Integrativa'></item>
+	<item id='20' nome='Nefrologia'></item>
+	<item id='21' nome='Neurologia'></item>
+	<item id='21' nome='Nutrição animal'></item>
+	<item id='23' nome='Odontologia'></item>
+	<item id='24' nome='Oftalmologia'></item>
+	<item id='25' nome='Oncologia'></item>
+	<item id='26' nome='Ortopedia'></item>
+	<item id='27' nome='Passe espiritual'></item>
+	<item id='28' nome='Pneumologia'></item>
+	<item id='29' nome='Reiki'></item>
+	<item id='30' nome='Reprodução animal'></item>
+</root>

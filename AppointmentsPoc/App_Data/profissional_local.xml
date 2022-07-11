@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<item idprof="1" idlocal="1"></item>
+	<item idprof="1" idlocal="2"></item>
+	<item idprof="1" idlocal="3"></item>
+	<item idprof="2" idlocal="1"></item>
+	<item idprof="2" idlocal="2"></item>
+	<item idprof="3" idlocal="2"></item>
+</root>
